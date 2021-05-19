@@ -18,4 +18,17 @@ From https://doc.rust-lang.org/book/
 - More here: https://doc.rust-lang.org/cargo/commands/
 
 ### Rust
+* Error handling:
+  * swapping from `expect` call to `match` statement is common to handle an err
+    * FROM
+      ```rust 
+          let guess: u32 = guess.trim().parse().expect("Please type a number!");
+      ```
+    * TO
+       ```rust 
+            let guess: u32 = match guess.trim().parse() {
+              Ok(num) => num,
+              Err(_) => {println!("Enter a valid number between 1 and 100");continue},
+          };
+      ```
 
