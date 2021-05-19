@@ -8,6 +8,7 @@ From https://doc.rust-lang.org/book/
 
 ### Cargo
 - `cargo help`: in case forget any of the below
+- `cargo new`: create a new package in current directory (e.g. `cargo new my_package`)
 - `cargo fix`: fix rust linting errors
 - `cargo clean`: delete prior **target/** directories
 - `cargo update`: update dependencies as defined in lock file
