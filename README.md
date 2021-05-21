@@ -76,4 +76,27 @@ From https://doc.rust-lang.org/book/
       * Each value in Rust has a variable that’s called its owner.
       * There can only be one owner at a time.
       * When the owner goes out of scope, the value will be dropped.
-    *   
+    * `String::` can be mutated, `&str` (string literals) cannot
+    * Important: https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html#memory-and-allocation
+    * "Deep copy" of heap data _can be done_ via `clone`
+    * Some type that implement `Copy` trait (do not require allocation)
+      * All the integer types, such as u32.
+      * The Boolean type, bool, with values true and false.
+      * All the floating point types, such as f64.
+      * The character type, char.
+      * Tuples, if they only contain types that also implement Copy. For example, (i32, i32) implements Copy, but (i32, String) does not.
+    * Types which need special freeing when out of scope implement the `Drop` trait
+    * Strict ownership can be tedious since you would have to return the string every time you want to use it again
+      * `&` references become handy here!
+      * Note: the opposite of referencing `&` is **dereferencing** `*` which will be used later
+      * & references is called *borrowing* in rust!
+    * Cannot mutate & refs (since you're borrowing, you don't own it)
+    * _CAN_ mutate `&mut` refs! - Though this is limited to one mutable ref for a piece of data in a given scope
+      * Example compile error: cannot borrow `s` as mutable more than once at a time
+    * These mutation restrictions prevent _data races_
+      * Two or more pointers access the same data at the same time.
+      * At least one of the pointers is being used to write to the data.
+      * There’s no mechanism being used to synchronize access to the data.
+    * 
+
+
